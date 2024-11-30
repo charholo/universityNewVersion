@@ -4,6 +4,9 @@ package org.university;
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        System.out.println("test1");
+
+        Student studen1 = new Student(10,"Charles","Holguín",40);
+        studen1.displayInfoPerson();
+
         }
 }
