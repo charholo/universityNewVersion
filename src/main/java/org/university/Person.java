@@ -3,11 +3,14 @@ package org.university;
 public class Person {
 
     private String name;
+    private String lastName;
     private int age;
 
-    public Person(String name, int age){
+
+    public Person(String name, String lastName, int age){
         this.name = name;
         this.age = age;
+        this.lastName = lastName;
     }
 
     public String getName(){
@@ -15,6 +18,12 @@ public class Person {
     }
     public void setName(String name){
         this.name= name;
+    }
+    public String getLastName(){
+        return lastName;
+    }
+    public void setLastName(String lastName){
+        this.lastName=lastName;
     }
     public int getAge(){
         return age;
@@ -26,12 +35,6 @@ public class Person {
     public void displayInfoPerson(){
         System.out.println("Name: " + getName());
         System.out.println("Age: " + getAge());
+        System.out.println("LastName" + getLastName());
     }
-
-
-
-
-
-
-
 }
