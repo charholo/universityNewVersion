@@ -9,8 +9,9 @@ public class Student extends Person{
 
 
     public Student(int idStudent, String nameStudent, String lastNameStudent, int ageStudent){
-        super(nameStudent,lastNameStudent,ageStudent);
+        super(nameStudent,lastNameStudent);
         this.idStudent=idStudent;
+        this.ageStudent = ageStudent;
     }
     public int getIdStudent(){
         return idStudent;
@@ -18,11 +19,18 @@ public class Student extends Person{
     public void setIdStudent(int idStudent){
         this.idStudent=idStudent;
     }
+    public int getAgeStudent(){
+        return ageStudent;
+    }
+    public void setAgeStudent(int ageStudent){
+        this.ageStudent=ageStudent;
+    }
 
     @Override
     public void displayInfoPerson(){
         super.displayInfoPerson();
         System.out.println("Student Id: " + getIdStudent());
+        System.out.println("Student Age:" + getAgeStudent());
 
     }
 

@@ -4,12 +4,9 @@ public class Person {
 
     private String name;
     private String lastName;
-    private int age;
 
-
-    public Person(String name, String lastName, int age){
+    public Person(String name, String lastName){
         this.name = name;
-        this.age = age;
         this.lastName = lastName;
     }
 
@@ -25,16 +22,9 @@ public class Person {
     public void setLastName(String lastName){
         this.lastName=lastName;
     }
-    public int getAge(){
-        return age;
-    }
-    public void setAge(int age){
-        this.age=age;
-    }
 
     public void displayInfoPerson(){
         System.out.println("Name: " + getName());
-        System.out.println("Age: " + getAge());
-        System.out.println("LastName" + getLastName());
+        System.out.println("LastName: " + getLastName());
     }
 }
