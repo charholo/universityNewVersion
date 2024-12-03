@@ -24,7 +24,6 @@ public class Person {
     }
 
     public void displayInfoPerson(){
-        System.out.println("Name: " + getName());
-        System.out.println("LastName: " + getLastName());
+        System.out.println(getName() + " " + getLastName());
     }
 }

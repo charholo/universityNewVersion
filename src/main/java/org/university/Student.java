@@ -3,8 +3,8 @@ package org.university;
 public class Student extends Person{
 
     private int idStudent;
-    private String nameStudent;
-    private String lastNameStudent;
+    //private String nameStudent;
+    //private String lastNameStudent;
     private int ageStudent;
 
 

@@ -3,12 +3,18 @@ package org.university;
 import java.util.ArrayList;
 
 public class Subject {
+    private int id;
     private String nameSubject;
+    private String classRoom;
+    private int idTeacher;
     private ArrayList<Student> storeStudentsBySubject;
     private Teacher teacher;
 
 
-    public Subject(String nameSubject){
+    public Subject(int id, String nameSubject,String classRoom,int idTeacher){
+        this.id=id;
+        this.classRoom=classRoom;
+        this.idTeacher=idTeacher;
         this.nameSubject=nameSubject;
         this.storeStudentsBySubject = new ArrayList<>();
     }
