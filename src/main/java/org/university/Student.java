@@ -28,11 +28,9 @@ public class Student extends Person{
 
     @Override
     public void displayInfoPerson(){
+        System.out.println("-------------------------------------");
         super.displayInfoPerson();
-        System.out.println("Student Id: " + getIdStudent());
-        System.out.println("Student Age:" + getAgeStudent());
-
+        System.out.println("Cod:" + getIdStudent() + " " + getAgeStudent()+ " years old" );
+        System.out.println("-------------------------------------");
     }
-
-
 }

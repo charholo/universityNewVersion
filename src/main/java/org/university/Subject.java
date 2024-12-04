@@ -19,6 +19,14 @@ public class Subject {
         this.storeStudentsBySubject = new ArrayList<>();
     }
 
+    public int getId(){
+        return id;
+    }
+    public String getNameSubject(){
+        return nameSubject;
+    }
+
+
     public void assignTeacherToSubject(Teacher teacher){
         this.teacher = teacher;
         System.out.println(teacher.getName() + " has been assigned to " + nameSubject);
@@ -37,12 +45,16 @@ public class Subject {
     }
 
     public void displaySubjectDetails() {
-        System.out.println("\nSubject: " + nameSubject);
+        //System.out.println(nameSubject);
         if (teacher != null) {
-            System.out.println("Teacher:");
-            teacher.displayInfoPerson();
+            //System.out.println("Teacher:");
+            teacher.displayInfoTeacher();
         } else {
             System.out.println("No teacher assigned yet.");
         }
+    }
+
+    public void displaySubjects(){
+        System.out.println(getId() + " - " + getNameSubject());
     }
 }

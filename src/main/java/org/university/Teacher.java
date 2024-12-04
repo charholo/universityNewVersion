@@ -33,13 +33,14 @@ public class Teacher extends Person{
             return finalSalary;
     }
 
+    public void displayInfoTeacher(){
+        super.displayInfoPerson();
+    }
+
     @Override
     public void displayInfoPerson(){
         super.displayInfoPerson();
         System.out.println("Id: " + getIdTeacher() + " Salary: " + getSalary() );
     }
-
-
-
 
 }

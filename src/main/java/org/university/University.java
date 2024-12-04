@@ -15,12 +15,6 @@ public class University {
         initData();
 
 
-
-
-
-
-
-
         //Database HashMap Teacher
         HashMap<Integer, Teacher> teacherDatabase = new HashMap<>();
         teacherDatabase.put(10, new Teacher(1, "Felipe", "Jiménez", 40000));
@@ -138,7 +132,6 @@ public class University {
                     for (Integer key : teacherDatabase.keySet()){
                         teacherDatabase.get(key).displayInfoPerson();
                         System.out.println( " ");
-
                     }
                     break;
 
@@ -150,8 +143,12 @@ public class University {
                     System.out.println("Please enter id of Subject to display information of class");
                     showSubject = leer.nextInt();
 
-                    System.out.println("Detalles de la subject ");
+                    subjectDatabase.get(showSubject).displaySubjects();
+                    System.out.println("By ");
                     subjectDatabase.get(showSubject).displaySubjectDetails();
+                    subjectDatabase.get(showSubject).displayStudents();
+
+
                     break;
 
 
@@ -176,9 +173,14 @@ public class University {
 
                         studentDatabase.put(idS, new Student(idS,nameS,lsNameS,ageS));
 
-                        //Show all subjects
-                        System.out.println(subjectDatabase); //Revisar porque trae solo el objeto
+                        //System.out.println(subjectDatabase.keySet()); //Revisar porque trae solo el objeto
+
                         System.out.println(" ");
+                        for (Integer key : subjectDatabase.keySet()){
+                            subjectDatabase.get(key).displaySubjects();
+                        }
+
+
                         System.out.println("Select one available subject id to asociate Student " + i);
                         idAsociateS = leer.nextInt();
                         subjectDatabase.get(idAsociateS).addStudent(new Student(idS, nameS, lsNameS, ageS));
@@ -212,6 +214,8 @@ public class University {
 
                         //Objeto que lleva todos los datos Subject
                         subjectDatabase.put(idSj,new Subject(idSj, nameSj, classRoom,idTeacherAssociate));
+                        Teacher eT = teacherDatabase.get(idTeacherAssociate);
+                        subjectDatabase.get(idSj).assignTeacherToSubject(eT);
 
                         do {
                             //Asociate student with Subject
