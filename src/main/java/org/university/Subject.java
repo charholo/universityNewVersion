@@ -40,7 +40,17 @@ public class Subject {
 
     public void displayStudents() {
         for (Student student : storeStudentsBySubject) {
+            System.out.println("pruebaaaa " + student.getIdStudent());
             student.displayInfoPerson();
+        }
+    }
+
+    public void displayStudentsById(int student) {
+        for (Student studentById : storeStudentsBySubject) {
+            if (student == studentById.getIdStudent()){
+                System.out.println("Subject: " + nameSubject);
+                studentById.displayInfoPerson();
+            }
         }
     }
 

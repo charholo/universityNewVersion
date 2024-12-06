@@ -229,12 +229,13 @@ public class University {
                     break;
 
                 case 5:
-                    System.out.println("Option E");
                     System.out.println("Enter StudentID");
                     StudentID = leer.nextInt();
-                    subjectDatabase.get(11).displayStudents(); // revisar para buscar por Id studiante
-                    break;
 
+                    for (Integer key : subjectDatabase.keySet()){
+                        subjectDatabase.get(key).displayStudentsById(StudentID);
+                    }
+                    break;
 
                 case 6:
 
