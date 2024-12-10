@@ -7,8 +7,9 @@ public class Subject {
     private String nameSubject;
     private String classRoom;
     private int idTeacher;
-    private ArrayList<Student> storeStudentsBySubject;
     private Teacher teacher;
+    private ArrayList<Student> storeStudentsBySubject;
+
 
 
     public Subject(int id, String nameSubject,String classRoom,int idTeacher){
@@ -40,7 +41,7 @@ public class Subject {
 
     public void displayStudents() {
         for (Student student : storeStudentsBySubject) {
-            System.out.println("pruebaaaa " + student.getIdStudent());
+            //System.out.println("pruebaaaa " + student.getIdStudent());
             student.displayInfoPerson();
         }
     }
