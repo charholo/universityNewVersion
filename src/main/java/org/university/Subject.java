@@ -10,8 +10,6 @@ public class Subject {
     private Teacher teacher;
     private ArrayList<Student> storeStudentsBySubject;
 
-
-
     public Subject(int id, String nameSubject,String classRoom,int idTeacher){
         this.id=id;
         this.classRoom=classRoom;
@@ -25,6 +23,12 @@ public class Subject {
     }
     public String getNameSubject(){
         return nameSubject;
+    }
+    public String getClassRoom(){
+        return classRoom;
+    }
+    public int getIdTeacher(){
+        return idTeacher;
     }
 
 
@@ -41,7 +45,6 @@ public class Subject {
 
     public void displayStudents() {
         for (Student student : storeStudentsBySubject) {
-            //System.out.println("pruebaaaa " + student.getIdStudent());
             student.displayInfoPerson();
         }
     }
@@ -56,16 +59,14 @@ public class Subject {
     }
 
     public void displaySubjectDetails() {
-        //System.out.println(nameSubject);
         if (teacher != null) {
-            //System.out.println("Teacher:");
             teacher.displayInfoTeacher();
-        } else {
-            System.out.println("No teacher assigned yet.");
         }
     }
 
     public void displaySubjects(){
-        System.out.println(getId() + " - " + getNameSubject());
+        System.out.println("***************************************************************************************************************************");
+        System.out.println("Subject Code: " + getId() + " ------ to  " + getNameSubject() + " ------ Teacher code asociate : " + getIdTeacher()  + " -------- Class code asociate: " +getClassRoom());
+        System.out.println("----------------------------------------------------------------------------------------------------------------------------");
     }
 }

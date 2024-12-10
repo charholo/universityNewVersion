@@ -4,6 +4,7 @@ public class Teacher extends Person{
     private int idTeacher;
     private double salary;
 
+
     public Teacher(int idTeacher, String nameTeacher,String lastNameTeacher, double salary){
         super(nameTeacher,lastNameTeacher);
         this.idTeacher=idTeacher;
@@ -13,16 +14,9 @@ public class Teacher extends Person{
     public int getIdTeacher(){
         return idTeacher;
     }
-    public void setIdTeacher(int idTeacher){
-        this.idTeacher=idTeacher;
-    }
     public double getSalary(){
         return salary;
     }
-    public void setSalary(double salary){
-        this.salary = salary;
-    }
-
     public double calcSalaryteacher (double salary, int isFullTime){
         double finalSalary = 0;
         if (isFullTime == 1){
@@ -34,6 +28,7 @@ public class Teacher extends Person{
     }
 
     public void displayInfoTeacher(){
+        System.out.println("Id: " + getIdTeacher() );
         super.displayInfoPerson();
     }
 

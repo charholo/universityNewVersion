@@ -4,7 +4,7 @@ import java.util.Random;
 public class Utilities {
 
     public static int getRandomNumberId(int identityId){
-        /*  1  - Student, 2  - Teacher, 3  - Subject  */
+        /*  1-Student, 2-Teacher, 3-Subject  */
         Random generateRandomNumber = new Random();
         int automaticalId = 0;
 
