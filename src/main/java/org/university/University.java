@@ -2,6 +2,7 @@ package org.university;
 import java.util.HashMap;
 import java.util.Scanner;
 
+
 public class University extends Utilities {
     private static HashMap<Integer, Teacher> teacherDatabase = new HashMap<>();
     private static HashMap<Integer, Student> studentDatabase = new HashMap<>();
@@ -14,13 +15,15 @@ public class University extends Utilities {
         Scanner read = new Scanner(System.in);
         initData();
 
+
         do{
             printMenu();
             menuOption = read.nextInt();
+
             switch (menuOption) {
 
                 case 1:
-                    System.out.println("****List of all teacher****");
+                    System.out.println("****List of all teachers****");
                     printTechers();
                     break;
 
@@ -43,6 +46,7 @@ public class University extends Utilities {
                         System.out.println("\n");
                         randomStudentId = getRandomNumberId(1);
                         System.out.println(randomStudentId + " Automatical ID " + " to Student "  + i);
+                        System.out.println(" ");
                         System.out.println("Enter NAME of student "+ i);
                         studentName = read.next();
                         System.out.println("Enter LASTNAME of student " + i);
@@ -50,55 +54,55 @@ public class University extends Utilities {
                         System.out.println("Enter AGE of student" + i);
                         studentAge = read.nextInt();
                         studentDatabase.put(randomStudentId, new Student(randomStudentId,studentName,studentLastName,studentAge));
-
-                        System.out.println(" ");
-
                         printSubjects();
 
-                        System.out.println("Select one available subject id to asociate Student " + i);
-                        idSubjectToAsociateStudent = read.nextInt();
-                        subjectDatabase.get(idSubjectToAsociateStudent).addStudent(new Student(randomStudentId, studentName, studentLastName, studentAge));
+                        do {
+                            System.out.println("Select one available subject id to asociate Student uno" + i);
+                            idSubjectToAsociateStudent = read.nextInt();
+                            cleanConsole();
+                            printSubjects();
+                        }while (subjectDatabase.get(idSubjectToAsociateStudent) == null);
 
+                        subjectDatabase.get(idSubjectToAsociateStudent).addStudent(new Student(randomStudentId, studentName, studentLastName, studentAge));
                         System.out.println("Process to asociate was correct " + i);
                         subjectDatabase.get(idSubjectToAsociateStudent).displayStudents();
                     }
                     break;
 
                 case 4:
-
                     System.out.println("How many Subjects do you need create?");
                     numberSubjectToCreate = read.nextInt();
 
-                    for (int sj = 1; sj <= numberSubjectToCreate; sj ++){
+                    for (int j = 1; j <= numberSubjectToCreate; j ++){
 
                         randomSubjectId = getRandomNumberId(2);
-                        System.out.println(randomSubjectId + " Automatical ID" + " to Subject "  + sj);
-                        System.out.println("Enter NAME of Subject "+ sj);
+                        System.out.println(randomSubjectId + " Automatical ID" + " to Subject "  + j);
+                        System.out.println("Enter NAME of Subject "+ j);
                         subjectName = read.next();
-                        System.out.println("Enter ClassRoom of teacher " + sj);
+                        System.out.println("Enter ClassRoom of teacher " + j);
                         classRoom = read.next();
-
                         printTechersIds();
 
                         do {
-                            System.out.println("Enter correct id teacher to asociate");
+                            System.out.println("please enter correct teacher Id");
                             idTeacherToAsociateSubject = read.nextInt();
+                            cleanConsole();
+                            printTechersIds();
                         }while (teacherDatabase.get(idTeacherToAsociateSubject) == null);
 
                         subjectDatabase.put(randomSubjectId,new Subject(randomSubjectId, subjectName, classRoom,idTeacherToAsociateSubject));
-                        //Teacher eT = teacherDatabase.get(idTeacherToAsociateSubject);
-                        //subjectDatabase.get(randomSubjectId).assignTeacherToSubject(eT);
-                        //eT.displayInfoTeacher();
+                        printStudents();
 
                         do {
-                            //Asociate student with Subject
                             System.out.println(" ");
-                            System.out.println("Enter correct Student to add in subject: " + subjectName);
+                            System.out.println("Please enter correct Student: " + subjectName);
                             studentId = read.nextInt();
+                            cleanConsole();
+                            printStudents();
                         }while (studentDatabase.get(studentId) == null);
-                        Student eS = studentDatabase.get(studentId);
-                        subjectDatabase.get(randomSubjectId).addStudent(eS);
-
+                        cleanConsole();
+                        Student student = studentDatabase.get(studentId);
+                        subjectDatabase.get(randomSubjectId).addStudent(student);
                     }
                     break;
 
@@ -119,7 +123,6 @@ public class University extends Utilities {
 
                         randomTeacherId = getRandomNumberId(3);
                         System.out.println(randomTeacherId + " Automatical ID " + " to teacher "  + t);
-
                         System.out.println("Enter NAME of teacher "+ t);
                         teacherName = read.next();
                         System.out.println("Enter LASTNAME of teacher " + t);
@@ -128,67 +131,12 @@ public class University extends Utilities {
                         teacherSalary = read.nextDouble();
                         System.out.println("¿The Teacher working full time? Enter value '1' to TRUE or value '2' to FALSE " + t);
                         isFullTime = read.nextInt();
-
-                        Teacher calcSalary = new Teacher(11,"charles","test",444);
-                        double finalSalary = calcSalary.calcSalaryteacher(teacherSalary,isFullTime);
+                        double finalSalary = calcSalaryTeacher(teacherSalary,isFullTime);
                         teacherDatabase.put(randomTeacherId, new Teacher(randomTeacherId, teacherName, teacherLastName, finalSalary));
                     }
                     break;
 
                 case 7:
-                    System.out.println("Option 7");
-
-                    //Busqueda ID  Subject
-
-                    subjectDatabase.get(11); // revisar traer todas las subjects
-                    System.out.println(" ");
-                    System.out.println("Seek Subject ID");
-                    subjectId = read.nextInt();
-                    Subject sJ = subjectDatabase.get(subjectId);
-                    if (sJ == null){
-                        System.out.println("Id doesn't exist ");
-                    }else{
-                        System.out.println("Subject  found MenuCase8: " + sJ);
-                    }
-                    break;
-
-
-
-                case 8:
-                    System.out.println("Option 8");
-                    System.out.println("Seek Student by ID");
-                    studentId = read.nextInt();
-                    Student eSs = studentDatabase.get(studentId);
-                    if (eSs == null){
-                        System.out.println("Id doesn't exist");
-                    }else{
-                        System.out.println("Student found: " + eSs);
-
-                    }
-
-                    break;
-
-
-
-                case 9:
-                    //Busqueda variable Teacher
-                    System.out.println("Option 9");
-                    System.out.println("Seek Teacher ID");
-
-                    teacherId = read.nextInt();
-                    Teacher tE = teacherDatabase.get(teacherId);
-                    if (tE == null){
-                        System.out.println("Id doesn't exist");
-                        Teacher tt = new Teacher(11,"chch","test",444);
-
-                        tt.displayInfoPerson();
-                    }else{
-                        System.out.println("Teacher found: " + tE);
-                    }
-                    break;
-
-
-                case 10:
                     System.out.println("Program Finish!!!");
                     System.exit(0);
                     break;
@@ -196,12 +144,14 @@ public class University extends Utilities {
                 default:
                     System.out.println("Unavailable option!");
                     System.out.println("¿Return to menu?");
-                    System.out.println("0 = Yes or 7 = No");
+                    System.out.println("0 = Yes or 8 = No");
                     menuOption = read.nextInt();
                     break;
+
             }
         }
-        while(menuOption!=10);
+
+        while(menuOption!=8);
 
     }
 
@@ -232,13 +182,20 @@ public class University extends Utilities {
         System.out.println("4: Create a new class and add and existing teacher & student");
         System.out.println("5: List all the clases given student is included (search by id) ");
         System.out.println("6: Create Teacher ");
-        System.out.println("7: Search Subject by ID");
-        System.out.println("8: Search Student By ID");
-        System.out.println("9: Search Teacher ID");
-        System.out.println("10: Exit");
+        System.out.println("7: Exit");
         System.out.print("To continue select any option: ");
         System.out.println(" ");
 
+    }
+
+    private static double calcSalaryTeacher (double salary, int isFullTime){
+        double finalSalary = 0;
+        if (isFullTime == 1){
+            return  (salary * (10 * 1.1)); //10 years of experiences
+        } else if (isFullTime == 2) {
+            return (salary * (30 * 0.1));// 30 hours per week
+        }else
+            return finalSalary;
     }
 
     private static void printSubjects(){
@@ -255,10 +212,21 @@ public class University extends Utilities {
             System.out.println( " ");
         }
     }
+    private static void printStudents(){
+        System.out.println(" ");
+        for (Integer key : studentDatabase.keySet()){
+            studentDatabase.get(key).displayInfoPerson();
+        }
+    }
     private static void printTechersIds(){
         for (Integer key : teacherDatabase.keySet()){
+            System.out.println("------------------------------");
             teacherDatabase.get(key).displayInfoTeacher();
-            System.out.println( " ");
+        }
+    }
+    private static void cleanConsole(){
+        for (int i = 0; i < 120; i++) {
+            System.out.println();
         }
     }
 

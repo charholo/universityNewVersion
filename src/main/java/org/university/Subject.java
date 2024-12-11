@@ -52,6 +52,7 @@ public class Subject {
     public void displayStudentsById(int student) {
         for (Student studentById : storeStudentsBySubject) {
             if (student == studentById.getIdStudent()){
+                System.out.println(" ");
                 System.out.println("Subject: " + nameSubject);
                 studentById.displayInfoPerson();
             }

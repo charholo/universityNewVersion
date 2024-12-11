@@ -22,6 +22,5 @@ public class Student extends Person{
         System.out.println("-------------------------------------");
         super.displayInfoPerson();
         System.out.println("Cod:" + getIdStudent() + " " + getAgeStudent()+ " years old" );
-        System.out.println("-------------------------------------");
     }
 }

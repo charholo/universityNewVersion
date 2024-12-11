@@ -17,15 +17,6 @@ public class Teacher extends Person{
     public double getSalary(){
         return salary;
     }
-    public double calcSalaryteacher (double salary, int isFullTime){
-        double finalSalary = 0;
-        if (isFullTime == 1){
-            return  (salary * (10 * 1.1)); //10 years of experiences
-        } else if (isFullTime == 2) {
-            return (salary * (30 * 0.1));// 30 hours per week
-        }else
-            return finalSalary;
-    }
 
     public void displayInfoTeacher(){
         System.out.println("Id: " + getIdTeacher() );
