@@ -3,40 +3,20 @@ package org.university;
 public class Person {
 
     private String name;
-    private int age;
+    private String lastName;
 
-    public Person(String name, int age){
+    public Person(String name, String lastName){
         this.name = name;
-        this.age = age;
-    }:
-
-    @Override
-    public boolean equals(Object obj) {
-        return super.equals(obj);
+        this.lastName = lastName;
     }
 
     public String getName(){
         return name;
     }
-    public void setName(String name){
-        this.name= name;
+    public String getLastName(){
+        return lastName;
     }
-    public int getAge(){
-        return age;
-    }
-    public void setAge(int age){
-        this.age=age;
-    }
-
     public void displayInfoPerson(){
-        System.out.println("Name: " + getName());
-        System.out.println("Age: " + getAge());
+        System.out.println(getName() + " " + getLastName());
     }
-
-
-
-
-
-
-
 }
