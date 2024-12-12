@@ -8,6 +8,11 @@ public class Person {
     public Person(String name, int age){
         this.name = name;
         this.age = age;
+    }:
+
+    @Override
+    public boolean equals(Object obj) {
+        return super.equals(obj);
     }
 
     public String getName(){
