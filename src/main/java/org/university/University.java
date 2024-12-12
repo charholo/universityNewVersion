@@ -9,12 +9,11 @@ public class University extends Utilities {
     private static HashMap<Integer, Subject> subjectDatabase = new HashMap<>();
 
     public static void main(String[] args) {
-        int menuOption,showSubject,numberStudentToCreate,studentAge,idSubjectToAsociateStudent,numberSubjectToCreate,idTeacherToAsociateSubject,studentId,numberTeacherToCreate,isFullTime,subjectId,teacherId,randomStudentId,randomSubjectId,randomTeacherId;
+        int menuOption,showSubject,numberStudentToCreate,studentAge,idSubjectToAsociateStudent,numberSubjectToCreate,idTeacherToAsociateSubject,studentId,numberTeacherToCreate,isFullTime,randomStudentId,randomSubjectId,randomTeacherId;
         String studentName,studentLastName,subjectName,classRoom,teacherName,teacherLastName;
         double teacherSalary;
         Scanner read = new Scanner(System.in);
         initData();
-
 
         do{
             printMenu();

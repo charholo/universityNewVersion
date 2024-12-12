@@ -31,13 +31,6 @@ public class Subject {
         return idTeacher;
     }
 
-
-    public void assignTeacherToSubject(Teacher teacher){
-        this.teacher = teacher;
-        System.out.println(teacher.getName() + " has been assigned to " + nameSubject);
-    }
-
-
     public void addStudent(Student student){
         storeStudentsBySubject.add(student);
         System.out.println(student.getName() + " Has been added " + nameSubject);
