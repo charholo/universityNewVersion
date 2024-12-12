@@ -129,8 +129,10 @@ public class University extends Utilities {
                         teacherLastName = read.next();
                         System.out.println("Enter SALARY of teacher" + t);
                         teacherSalary = read.nextDouble();
+
                         System.out.println("¿The Teacher working full time? Enter value '1' to TRUE or value '2' to FALSE " + t);
                         isFullTime = read.nextInt();
+
                         double finalSalary = calcSalaryTeacher(teacherSalary,isFullTime);
                         teacherDatabase.put(randomTeacherId, new Teacher(randomTeacherId, teacherName, teacherLastName, finalSalary));
                     }
