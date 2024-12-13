@@ -54,7 +54,7 @@ public class Subject {
 
     public void displaySubjectDetails() {
         if (teacher != null) {
-            teacher.displayInfoTeacher();
+            teacher.displayInfoPerson();
         }
     }
 

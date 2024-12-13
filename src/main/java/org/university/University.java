@@ -11,7 +11,7 @@ public class University extends Utilities {
     public static void main(String[] args) {
         int menuOption,showSubject,numberStudentToCreate,studentAge,idSubjectToAsociateStudent,numberSubjectToCreate,idTeacherToAsociateSubject,studentId,numberTeacherToCreate,isFullTime,randomStudentId,randomSubjectId,randomTeacherId;
         String studentName,studentLastName,subjectName,classRoom,teacherName,teacherLastName;
-        double teacherSalary;
+        double teacherSalary,seniorityExperience;
         Scanner read = new Scanner(System.in);
         initData();
 
@@ -129,11 +129,12 @@ public class University extends Utilities {
                         System.out.println("Enter SALARY of teacher" + t);
                         teacherSalary = read.nextDouble();
 
-                        System.out.println("¿The Teacher working full time? Enter value '1' to TRUE or value '2' to FALSE " + t);
-                        isFullTime = read.nextInt();
+                        System.out.println("Enter how many year of expiriences have the teacher" + t);
+                        seniorityExperience = read.nextInt();
 
-                        double finalSalary = calcSalaryTeacher(teacherSalary,isFullTime);
-                        teacherDatabase.put(randomTeacherId, new Teacher(randomTeacherId, teacherName, teacherLastName, finalSalary));
+                        TeacherFullTime objectToCalculatefullTimeSalary = new TeacherFullTime();
+                        double finalSalary = objectToCalculatefullTimeSalary.calculateSalary(teacherSalary, seniorityExperience);
+                        teacherDatabase.put(randomTeacherId, new TeacherFullTime(randomTeacherId, teacherName, teacherLastName, finalSalary,seniorityExperience));
                     }
                     break;
 
@@ -158,8 +159,8 @@ public class University extends Utilities {
 
     static void initData(){
         //initialize Database Teacher
-        teacherDatabase.put(10, new Teacher(10, "Felipe", "Jiménez", 40000));
-        teacherDatabase.put(20, new Teacher(20,"Santiago", "Ponce de Leon", 3500));
+        teacherDatabase.put(10, new TeacherFullTime(10, "Felipe", "Jiménez", 40000,20));
+        teacherDatabase.put(20, new TeacherFullTime(20,"Santiago", "Ponce de Leon", 3500,20));
         //initialize Database Students
         studentDatabase.put(1, new Student(1,"Charholo","Holguin",31));
         studentDatabase.put(2, new Student(2,"Lizfer","Rios",34));
@@ -188,7 +189,7 @@ public class University extends Utilities {
         System.out.println(" ");
 
     }
-
+/*
     private static double calcSalaryTeacher (double salary, int isFullTime){
         double finalSalary = 0;
         if (isFullTime == 1){
@@ -198,6 +199,8 @@ public class University extends Utilities {
         }else
             return finalSalary;
     }
+
+ */
 
     private static void printSubjects(){
         System.out.println(" ");

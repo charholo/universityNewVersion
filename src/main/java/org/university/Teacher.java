@@ -1,32 +1,17 @@
 package org.university;
 
-public class Teacher extends Person{
-    private int idTeacher;
-    private double salary;
+public abstract class Teacher extends Person{
 
-
-    public Teacher(int idTeacher, String nameTeacher,String lastNameTeacher, double salary){
+    public Teacher(String nameTeacher,String lastNameTeacher){
         super(nameTeacher,lastNameTeacher);
-        this.idTeacher=idTeacher;
-        this.salary=salary;
+    }
+    public Teacher(){
     }
 
-    public int getIdTeacher(){
-        return idTeacher;
-    }
-    public double getSalary(){
-        return salary;
-    }
+    public abstract void displayInfoTeacher();
 
-    public void displayInfoTeacher(){
-        System.out.println("Id: " + getIdTeacher() );
-        super.displayInfoPerson();
-    }
+    public abstract void displayInfoPerson();
 
-    @Override
-    public void displayInfoPerson(){
-        super.displayInfoPerson();
-        System.out.println("Id: " + getIdTeacher() + " Salary: " + getSalary() );
-    }
+    public abstract double calculateSalary(double salary, double seniorityExperience);
 
 }
