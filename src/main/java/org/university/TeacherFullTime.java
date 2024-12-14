@@ -31,7 +31,9 @@ public class TeacherFullTime extends Teacher{
 
     @Override
     public void displayInfoPerson(){
-        System.out.println("Id: " + getIdTeacher() + " " + super.getName() + " " +  super.getLastName() + " " + " Salary: " + getSalary() + "Teat of experience " + getSeniorityExperience());
+        System.out.println("----------------------------------------------------------------------------------------------------------------------------");
+        System.out.println("Teacher Code: " + getIdTeacher() + " " + super.getName() + " " +  super.getLastName() + " " + " Salary: " + getSalary() + " Us " + " experience " + getSeniorityExperience()+ " years ");
+        System.out.println("----------------------------------------------------------------------------------------------------------------------------");
     }
 
     @Override

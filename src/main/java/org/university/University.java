@@ -9,7 +9,7 @@ public class University extends Utilities {
     private static HashMap<Integer, Subject> subjectDatabase = new HashMap<>();
 
     public static void main(String[] args) {
-        int menuOption,showSubject,numberStudentToCreate,studentAge,idSubjectToAsociateStudent,numberSubjectToCreate,idTeacherToAsociateSubject,studentId,numberTeacherToCreate,isFullTime,randomStudentId,randomSubjectId,randomTeacherId;
+        int menuOption,menuOptionTeacher, showSubject,numberStudentToCreate,studentAge,idSubjectToAsociateStudent,numberSubjectToCreate,idTeacherToAsociateSubject,studentId,numberTeacherToCreate,isFullTime,randomStudentId,randomSubjectId,randomTeacherId;
         String studentName,studentLastName,subjectName,classRoom,teacherName,teacherLastName;
         double teacherSalary,seniorityExperience;
         Scanner read = new Scanner(System.in);
@@ -128,14 +128,31 @@ public class University extends Utilities {
                         teacherLastName = read.next();
                         System.out.println("Enter SALARY of teacher" + t);
                         teacherSalary = read.nextDouble();
+                        System.out.println("Select option to create teacher" + t);
+                        System.out.println("1. Full time");
+                        System.out.println("2. Part time");
+                        menuOptionTeacher = read.nextInt();
 
-                        System.out.println("Enter how many year of expiriences have the teacher" + t);
-                        seniorityExperience = read.nextInt();
+                        if (menuOptionTeacher == 1){
+                            System.out.println("To full time teacher please enter year of expiriences " + t);
+                            seniorityExperience = read.nextInt();
 
-                        TeacherFullTime objectToCalculatefullTimeSalary = new TeacherFullTime();
-                        double finalSalary = objectToCalculatefullTimeSalary.calculateSalary(teacherSalary, seniorityExperience);
-                        teacherDatabase.put(randomTeacherId, new TeacherFullTime(randomTeacherId, teacherName, teacherLastName, finalSalary,seniorityExperience));
-                    }
+                            TeacherFullTime objectToCalculatefullTimeSalary = new TeacherFullTime();
+                            double finalSalary = objectToCalculatefullTimeSalary.calculateSalary(teacherSalary, seniorityExperience);
+                            teacherDatabase.put(randomTeacherId, new TeacherFullTime(randomTeacherId, teacherName, teacherLastName, finalSalary,seniorityExperience));
+
+                        }else if (menuOptionTeacher == 2){
+                            System.out.println("To part  time teacher please enter hours per week  " + t);
+                            seniorityExperience = read.nextInt();
+
+                            TeacherPartTime objectToCalculatefullPartTimeSalary = new TeacherPartTime();
+                            double finalSalary = objectToCalculatefullPartTimeSalary.calculateSalary(teacherSalary, seniorityExperience);
+                            teacherDatabase.put(randomTeacherId, new TeacherPartTime(randomTeacherId, teacherName, teacherLastName, finalSalary,seniorityExperience));
+
+                        }else {
+                            System.out.println("Sorry wrong option");
+                        }
+                     }
                     break;
 
                 case 7:
@@ -159,8 +176,8 @@ public class University extends Utilities {
 
     static void initData(){
         //initialize Database Teacher
-        teacherDatabase.put(10, new TeacherFullTime(10, "Felipe", "Jiménez", 40000,20));
-        teacherDatabase.put(20, new TeacherFullTime(20,"Santiago", "Ponce de Leon", 3500,20));
+        teacherDatabase.put(10, new TeacherFullTime(10, "Felipe", "Jiménez", 4000,8));
+        teacherDatabase.put(20, new TeacherPartTime(20,"Santiago", "Ponce de Leon", 4000,40));
         //initialize Database Students
         studentDatabase.put(1, new Student(1,"Charholo","Holguin",31));
         studentDatabase.put(2, new Student(2,"Lizfer","Rios",34));
@@ -189,18 +206,6 @@ public class University extends Utilities {
         System.out.println(" ");
 
     }
-/*
-    private static double calcSalaryTeacher (double salary, int isFullTime){
-        double finalSalary = 0;
-        if (isFullTime == 1){
-            return  (salary * (10 * 1.1)); //10 years of experiences
-        } else if (isFullTime == 2) {
-            return (salary * (30 * 0.1));// 30 hours per week
-        }else
-            return finalSalary;
-    }
-
- */
 
     private static void printSubjects(){
         System.out.println(" ");
@@ -210,10 +215,8 @@ public class University extends Utilities {
     }
 
     private static void printTechers(){
-        System.out.println(" ");
         for (Integer key : teacherDatabase.keySet()){
             teacherDatabase.get(key).displayInfoPerson();
-            System.out.println( " ");
         }
     }
     private static void printStudents(){
