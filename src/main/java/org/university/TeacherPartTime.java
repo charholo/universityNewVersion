@@ -26,7 +26,7 @@ public class TeacherPartTime extends Teacher{
     }
     @Override
     public void displayInfoTeacher(){
-        System.out.println("Id: " + getIdTeacher() );
+        System.out.println("Id: " + getIdTeacher() + " " + getName() + " " + getLastName());
     }
 
     @Override

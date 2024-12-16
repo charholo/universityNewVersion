@@ -227,8 +227,8 @@ public class University extends Utilities {
     }
     private static void printTechersIds(){
         for (Integer key : teacherDatabase.keySet()){
-            System.out.println("------------------------------");
             teacherDatabase.get(key).displayInfoTeacher();
+            System.out.println("------------------------------");
         }
     }
     private static void cleanConsole(){
