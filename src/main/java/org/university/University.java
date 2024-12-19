@@ -7,6 +7,7 @@ public class University extends Utilities {
     private static HashMap<Integer, Teacher> teacherDatabase = new HashMap<>();
     private static HashMap<Integer, Student> studentDatabase = new HashMap<>();
     private static HashMap<Integer, Subject> subjectDatabase = new HashMap<>();
+    private RandomIdentifier randomIdentifier;
 
     public static void main(String[] args) {
         int menuOption,menuOptionTeacher, showSubject,numberStudentToCreate,studentAge,idSubjectToAsociateStudent,numberSubjectToCreate,idTeacherToAsociateSubject,studentId,numberTeacherToCreate,isFullTime,randomStudentId,randomSubjectId,randomTeacherId;
@@ -43,7 +44,7 @@ public class University extends Utilities {
 
                     for (int i = 1; i <= numberStudentToCreate; i ++){
                         System.out.println("\n");
-                        randomStudentId = getRandomNumberId(1);
+                        randomStudentId = getRandomNumberId(RandomIdentifier.STUDENT);
                         System.out.println(randomStudentId + " Automatical ID " + " to Student "  + i);
                         System.out.println(" ");
                         System.out.println("Enter NAME of student "+ i);
@@ -74,7 +75,7 @@ public class University extends Utilities {
 
                     for (int j = 1; j <= numberSubjectToCreate; j ++){
 
-                        randomSubjectId = getRandomNumberId(2);
+                        randomSubjectId = getRandomNumberId(RandomIdentifier.SUBJECT);
                         System.out.println(randomSubjectId + " Automatical ID" + " to Subject "  + j);
                         System.out.println("Enter NAME of Subject "+ j);
                         subjectName = read.next();
@@ -120,7 +121,7 @@ public class University extends Utilities {
 
                     for (int t = 1; t <= numberTeacherToCreate; t ++){
 
-                        randomTeacherId = getRandomNumberId(3);
+                        randomTeacherId = getRandomNumberId(RandomIdentifier.TEACHER);
                         System.out.println(randomTeacherId + " Automatical ID " + " to teacher "  + t);
                         System.out.println("Enter NAME of teacher "+ t);
                         teacherName = read.next();
