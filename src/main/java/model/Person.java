@@ -1,4 +1,4 @@
-package org.university;
+package model;
 
 public class Person {
 

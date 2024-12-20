@@ -1,22 +1,24 @@
-package org.university;
+package service;
 
-public class TeacherFullTime extends Teacher{
-    private int idTeacher;
+import model.Teacher;
+
+public class TeacherFullTime extends Teacher {
+    private int id;
     private double salary;
     private double seniorityExperience;
 
 
-    public TeacherFullTime(int idTeacher, String nameTeacher,String lastNameTeacher, double salary, double seniorityExperience){
-        super(nameTeacher,lastNameTeacher);
-        this.idTeacher=idTeacher;
+    public TeacherFullTime(int id, String name,String lastName, double salary, double seniorityExperience){
+        super(name,lastName);
+        this.id=id;
         this.salary=salary;
         this.seniorityExperience= seniorityExperience;
     }
     public TeacherFullTime(){
     }
 
-    public int getIdTeacher(){
-        return idTeacher;
+    public int getId(){
+        return id;
     }
     public double getSalary(){
         return salary;
@@ -26,13 +28,13 @@ public class TeacherFullTime extends Teacher{
     }
     @Override
     public void displayInfoTeacher(){
-        System.out.println("Id: " + getIdTeacher() + " " + getName() + " " + getLastName());
+        System.out.println("Id: " + getId() + " " + getName() + " " + getLastName());
     }
 
     @Override
     public void displayInfoPerson(){
         System.out.println("----------------------------------------------------------------------------------------------------------------------------");
-        System.out.println("Teacher Code: " + getIdTeacher() + " " + super.getName() + " " +  super.getLastName() + " " + " Salary: " + getSalary() + " Us " + " experience " + getSeniorityExperience()+ " years ");
+        System.out.println("Teacher Code: " + getId() + " " + super.getName() + " " +  super.getLastName() + " " + " Salary: " + getSalary() + " Us " + " experience " + getSeniorityExperience()+ " years ");
         System.out.println("----------------------------------------------------------------------------------------------------------------------------");
     }
 

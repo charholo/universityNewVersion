@@ -1,4 +1,11 @@
-package org.university;
+package controller;
+import helpers.Utilities;
+import model.Student;
+import model.Subject;
+import model.Teacher;
+import service.TeacherFullTime;
+import service.TeacherPartTime;
+
 import java.util.HashMap;
 import java.util.Scanner;
 
@@ -7,7 +14,6 @@ public class University extends Utilities {
     private static HashMap<Integer, Teacher> teacherDatabase = new HashMap<>();
     private static HashMap<Integer, Student> studentDatabase = new HashMap<>();
     private static HashMap<Integer, Subject> subjectDatabase = new HashMap<>();
-    private RandomIdentifier randomIdentifier;
 
     public static void main(String[] args) {
         int menuOption,menuOptionTeacher, showSubject,numberStudentToCreate,studentAge,idSubjectToAsociateStudent,numberSubjectToCreate,idTeacherToAsociateSubject,studentId,numberTeacherToCreate,isFullTime,randomStudentId,randomSubjectId,randomTeacherId;
@@ -81,18 +87,21 @@ public class University extends Utilities {
                         subjectName = read.next();
                         System.out.println("Enter ClassRoom of teacher " + j);
                         classRoom = read.next();
-                        printTechersIds();
 
+                        subjectDatabase.put(randomSubjectId,new Subject(randomSubjectId, subjectName, classRoom));
+
+
+                        printTechersIds();
                         do {
                             System.out.println("please enter correct teacher Id");
                             idTeacherToAsociateSubject = read.nextInt();
                             cleanConsole();
                             printTechersIds();
                         }while (teacherDatabase.get(idTeacherToAsociateSubject) == null);
+                        Teacher teacher = teacherDatabase.get(idTeacherToAsociateSubject);
+                        subjectDatabase.get(randomSubjectId).addTeacher(teacher);
 
-                        subjectDatabase.put(randomSubjectId,new Subject(randomSubjectId, subjectName, classRoom,idTeacherToAsociateSubject));
                         printStudents();
-
                         do {
                             System.out.println(" ");
                             System.out.println("Please enter correct Student: " + subjectName);
@@ -104,6 +113,8 @@ public class University extends Utilities {
                         Student student = studentDatabase.get(studentId);
                         subjectDatabase.get(randomSubjectId).addStudent(student);
                     }
+
+
                     break;
 
                 case 5:
@@ -187,10 +198,10 @@ public class University extends Utilities {
         studentDatabase.put(5, new Student(5,"Luisa","Montes",19));
         studentDatabase.put(6, new Student(6,"Fernanda","Rios",21));
         //initialize Database Subject
-        subjectDatabase.put(1000,new Subject(1000,"Java programming","a12",11));
-        subjectDatabase.put(1001,new Subject(1001,"Poo Python","a12",11));
-        subjectDatabase.put(1002,new Subject(1002,"Java Script class","a12",11));
-        subjectDatabase.put(1003,new Subject(1003,"Android class","a12",11));
+        subjectDatabase.put(1000,new Subject(1000,"Java programming","a12"));
+        subjectDatabase.put(1001,new Subject(1001,"Poo Python","a12"));
+        subjectDatabase.put(1002,new Subject(1002,"Java Script class","a12"));
+        subjectDatabase.put(1003,new Subject(1003,"Android class","a12"));
     }
 
     private static void printMenu(){

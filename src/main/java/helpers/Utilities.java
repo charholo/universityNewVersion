@@ -1,4 +1,4 @@
-package org.university;
+package helpers;
 import java.util.Random;
 
 public class Utilities {
@@ -15,5 +15,9 @@ public class Utilities {
             return generateRandomNumber.nextInt(200-100+1) + 200;
         }
         return automaticalId;
+    }
+
+    public enum RandomIdentifier {
+        STUDENT, TEACHER, SUBJECT;
     }
 }

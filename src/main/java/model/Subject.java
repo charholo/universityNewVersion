@@ -1,4 +1,4 @@
-package org.university;
+package model;
 
 import java.util.ArrayList;
 
@@ -9,13 +9,14 @@ public class Subject {
     private int idTeacher;
     private Teacher teacher;
     private ArrayList<Student> storeStudentsBySubject;
+    private ArrayList<Teacher> storeTeacherBySubject;
 
-    public Subject(int id, String nameSubject,String classRoom,int idTeacher){
+    public Subject(int id, String nameSubject,String classRoom){
         this.id=id;
         this.classRoom=classRoom;
-        this.idTeacher=idTeacher;
         this.nameSubject=nameSubject;
         this.storeStudentsBySubject = new ArrayList<>();
+        this.storeTeacherBySubject = new ArrayList<>();
     }
 
     public int getId(){
@@ -27,13 +28,23 @@ public class Subject {
     public String getClassRoom(){
         return classRoom;
     }
-    public int getIdTeacher(){
-        return idTeacher;
+
+    public String getIdTeacher(){
+        String name = "";
+        for (Teacher teacher : storeTeacherBySubject) {
+            name = teacher.getName() + " " + teacher.getLastName();
+        }
+        return name;
     }
 
     public void addStudent(Student student){
         storeStudentsBySubject.add(student);
         System.out.println(student.getName() + " Has been added " + nameSubject);
+    }
+
+    public void addTeacher(Teacher teacher){
+        storeTeacherBySubject.add(teacher);
+        System.out.println(teacher.getName() + " Has been added " + nameSubject);
     }
 
     public void displayStudents() {
@@ -44,7 +55,7 @@ public class Subject {
 
     public void displayStudentsById(int student) {
         for (Student studentById : storeStudentsBySubject) {
-            if (student == studentById.getIdStudent()){
+            if (student == studentById.getId()){
                 System.out.println(" ");
                 System.out.println("Subject: " + nameSubject + " Code: " + getId());
                 studentById.displayInfoPerson();
