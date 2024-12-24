@@ -4,14 +4,14 @@ import model.Teacher;
 
 public class TeacherFullTime extends Teacher {
     private int id;
-    private double salary;
+    private double baseSalary;
     private double seniorityExperience;
 
 
-    public TeacherFullTime(int id, String name,String lastName, double salary, double seniorityExperience){
+    public TeacherFullTime(int id, String name,String lastName, double baseSalary, double seniorityExperience){
         super(name,lastName);
         this.id=id;
-        this.salary=salary;
+        this.baseSalary=baseSalary;
         this.seniorityExperience= seniorityExperience;
     }
     public TeacherFullTime(){
@@ -21,7 +21,7 @@ public class TeacherFullTime extends Teacher {
         return id;
     }
     public double getSalary(){
-        return salary;
+        return baseSalary;
     }
     public double getSeniorityExperience(){
         return seniorityExperience;
@@ -39,7 +39,7 @@ public class TeacherFullTime extends Teacher {
     }
 
     @Override
-    public double calculateSalary (double salary, double seniorityExperience){
-        return salary * (1 + 0.1 * seniorityExperience);
+    public double calculateSalary (double baseSalary, double seniorityExperience){
+        return baseSalary * (1 + 0.1 * seniorityExperience);
     }
 }

@@ -4,14 +4,14 @@ import model.Teacher;
 
 public class TeacherPartTime extends Teacher {
     private int id;
-    private double salary;
+    private double baseSalary;
     private double hoursPerWeek;
 
 
-    public TeacherPartTime(int id, String name,String lastName, double salary, double hoursPerWeek){
+    public TeacherPartTime(int id, String name,String lastName, double baseSalary, double hoursPerWeek){
         super(name,lastName);
         this.id=id;
-        this.salary=salary;
+        this.baseSalary=baseSalary;
         this.hoursPerWeek= hoursPerWeek;
     }
     public TeacherPartTime(){
@@ -21,7 +21,7 @@ public class TeacherPartTime extends Teacher {
         return id;
     }
     public double getSalary(){
-        return salary;
+        return baseSalary;
     }
     public double getHoursPerWeek(){
         return hoursPerWeek;
@@ -39,7 +39,7 @@ public class TeacherPartTime extends Teacher {
     }
 
     @Override
-    public double calculateSalary (double salary, double getHoursPerWeek){
-        return salary * (00.1 * getHoursPerWeek);
+    public double calculateSalary (double baseSalary, double getHoursPerWeek){
+        return baseSalary * (00.1 * getHoursPerWeek);
     }
 }

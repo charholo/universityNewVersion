@@ -40,7 +40,7 @@ public class University extends Utilities {
                     System.out.println("Please enter id of Subject to display information of class");
                     showSubject = read.nextInt();
                     subjectDatabase.get(showSubject).displaySubjects();
-                    subjectDatabase.get(showSubject).displaySubjectDetails();
+                    subjectDatabase.get(showSubject).getIdTeacher();
                     subjectDatabase.get(showSubject).displayStudents();
                     break;
 

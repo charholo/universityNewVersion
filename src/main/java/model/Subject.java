@@ -6,7 +6,6 @@ public class Subject {
     private int id;
     private String nameSubject;
     private String classRoom;
-    private int idTeacher;
     private Teacher teacher;
     private ArrayList<Student> storeStudentsBySubject;
     private ArrayList<Teacher> storeTeacherBySubject;
@@ -66,6 +65,7 @@ public class Subject {
     public void displaySubjectDetails() {
         if (teacher != null) {
             teacher.displayInfoPerson();
+
         }
     }
 
