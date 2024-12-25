@@ -74,4 +74,11 @@ public class Subject {
         System.out.println("Subject Code: " + getId() + " ------ to  " + getNameSubject() + " ------ Teacher code asociate : " + getIdTeacher()  + " -------- Class code asociate: " +getClassRoom());
         System.out.println("----------------------------------------------------------------------------------------------------------------------------");
     }
+
+    @Override
+    public String toString(){
+        return  "Subject Code to String: " + getId() + " ------ to  " + getNameSubject() + " ------ Teacher code asociate : " + getIdTeacher()  + " -------- Class code asociate: " + getClassRoom() + "\r\n";
+    }
+
+
 }

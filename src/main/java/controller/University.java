@@ -221,9 +221,13 @@ public class University extends Utilities {
 
     private static void printSubjects(){
         System.out.println(" ");
-        for (Integer key : subjectDatabase.keySet()){
-            subjectDatabase.get(key).displaySubjects();
+        /*for (Integer key : subjectDatabase.keySet()){
+            //subjectDatabase.get(key).displaySubjects();
+            subjectDatabase.get(key).toString();
         }
+
+         */
+        System.out.println(subjectDatabase);
     }
 
     private static void printTechers(){
