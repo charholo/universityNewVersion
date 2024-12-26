@@ -15,7 +15,8 @@ import java.util.Scanner;
 public class University extends Utilities {
     //private static HashMap<Integer, Teacher> teacherDatabase = new HashMap<>();
     private static List<Teacher> teacherDatabase = new ArrayList<>();
-    private static HashMap<Integer, Student> studentDatabase = new HashMap<>();
+    //private static HashMap<Integer, Student> studentDatabase = new HashMap<>();
+    private static List<Student> studentDatabase = new ArrayList<>();
     private static List<Subject> subjectDatabase = new ArrayList<>();
     //private static HashMap<Integer, Subject> subjectDatabase = new HashMap<>();
 
@@ -43,10 +44,13 @@ public class University extends Utilities {
                     System.out.println(" ");
                     System.out.println("Please enter id of Subject to display information of class");
                     showSubject = read.nextInt();
-                    //searchSubjects(showSubject);
+                    searchSubjects(showSubject).displaySubjects();
+
                     //searchSubjects(showSubject).getIdTeacher();
-                    System.out.println(searchSubjects(showSubject));
-                    searchSubjects(showSubject).displayStudents();
+                    searchSubjects(showSubject).getStudentsToSubject();
+
+
+                    //System.out.println(searchSubjects(showSubject));
                     //subjectDatabase.get(showSubject);
                     //subjectDatabase.get(showSubject).getIdTeacher();
                     //subjectDatabase.get(showSubject).displayStudents();
@@ -67,7 +71,7 @@ public class University extends Utilities {
                         studentLastName = read.next();
                         System.out.println("Enter AGE of student" + i);
                         studentAge = read.nextInt();
-                        studentDatabase.put(randomStudentId, new Student(randomStudentId, studentName, studentLastName, studentAge));
+                        studentDatabase.add(new Student(randomStudentId, studentName, studentLastName, studentAge));
                         //printSubjects();
 
                         do {
@@ -78,9 +82,10 @@ public class University extends Utilities {
 
                         }while (searchSubjects(idSubjectToAsociateStudent) == null);
 
-                        Student student = studentDatabase.get(randomStudentId);
+                        //Student student = studentDatabase.get(randomStudentId);
 
-                        searchSubjects(idSubjectToAsociateStudent).addStudent(student);
+                        //searchSubjects(idSubjectToAsociateStudent).addStudent(student);
+                        searchSubjects(idSubjectToAsociateStudent).addStudent(searchStudent(randomStudentId));
 
                         //searchSubjects(idSubjectToAsociateStudent).addStudent(new Student(randomStudentId, studentName, studentLastName, studentAge));
 
@@ -127,12 +132,12 @@ public class University extends Utilities {
                             studentId = read.nextInt();
                             cleanConsole();
                             printStudents();
-                        }while (studentDatabase.get(studentId) == null);
+                        }while (searchStudent(studentId) == null);
                         cleanConsole();
-                        Student student = studentDatabase.get(studentId);
+                        //Student student = studentDatabase.get(studentId);
                         //subjectDatabase.get(randomSubjectId).addStudent(student);
 
-                        searchSubjects(randomSubjectId).addStudent(student);
+                        searchSubjects(randomSubjectId).addStudent(searchStudent(studentId));
                     }
 
 
@@ -212,12 +217,12 @@ public class University extends Utilities {
         teacherDatabase.add(new TeacherFullTime(10, "Felipe", "Jiménez", 4000,8));
         teacherDatabase.add(new TeacherPartTime(20,"Santiago", "Ponce de Leon", 4000,40));
         //initialize Database Students
-        studentDatabase.put(1, new Student(1,"Charholo","Holguin",31));
-        studentDatabase.put(2, new Student(2,"Lizfer","Rios",34));
-        studentDatabase.put(3, new Student(3,"Cesar","Ramirez",22));
-        studentDatabase.put(4, new Student(4,"Jaime","Arias",36));
-        studentDatabase.put(5, new Student(5,"Luisa","Montes",19));
-        studentDatabase.put(6, new Student(6,"Fernanda","Rios",21));
+        studentDatabase.add(new Student(1,"Charholo","Holguin",31));
+        studentDatabase.add(new Student(2,"Lizfer","Rios",34));
+        studentDatabase.add(new Student(3,"Cesar","Ramirez",22));
+        studentDatabase.add(new Student(4,"Jaime","Arias",36));
+        studentDatabase.add(new Student(5,"Luisa","Montes",19));
+        studentDatabase.add(new Student(6,"Fernanda","Rios",21));
         //initialize Database Subject
         subjectDatabase.add(new Subject(1000,"Java programming","a12"));
         subjectDatabase.add(new Subject(1001,"Poo Python","a12"));
@@ -279,6 +284,18 @@ public class University extends Utilities {
         return teacherObject;
     }
 
+    private static Student searchStudent (int idStudent){
+        Student studentObject = null;
+        for (Student studentObjectLoop : studentDatabase){
+            if (studentObjectLoop.getId() == idStudent) {
+                //System.out.println(subjectObjectLoop);
+                studentObject = studentObjectLoop;
+                return studentObject;
+            }
+        }
+        return studentObject;
+    }
+
 
 
     private static void printTechers(){
@@ -292,9 +309,11 @@ public class University extends Utilities {
     }
     private static void printStudents(){
         System.out.println(" ");
-        for (Integer key : studentDatabase.keySet()){
+        /*for (Integer key : studentDatabase.keySet()){
             studentDatabase.get(key).displayInfoPerson();
         }
+        */
+        System.out.println(studentDatabase);
     }
     private static void printTechersIds(){
         /*for (Integer key : teacherDatabase.keySet()){
@@ -305,6 +324,7 @@ public class University extends Utilities {
          */
         System.out.println(teacherDatabase);
     }
+
     private static void cleanConsole(){
         for (int i = 0; i < 80; i++) {
             System.out.println();

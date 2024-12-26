@@ -46,7 +46,7 @@ public class Subject {
         System.out.println(teacher.getName() + " Has been added to " + nameSubject);
     }
 
-    public void displayStudents() {
+    public void getStudentsToSubject() {
         for (Student student : storeStudentsBySubject) {
             student.displayInfoPerson();
         }
