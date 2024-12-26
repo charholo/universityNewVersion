@@ -62,23 +62,14 @@ public class Subject {
         }
     }
 
-    public void displaySubjectDetails() {
-        if (teacher != null) {
-            teacher.displayInfoPerson();
-
-        }
-    }
-
     public void displaySubjects(){
         System.out.println("***************************************************************************************************************************");
-        System.out.println("Subject Code: " + getId() + " ------ to  " + getNameSubject() + " ------ Teacher code asociate : " + getIdTeacher()  + " -------- Class code asociate: " +getClassRoom());
+        System.out.println("Subject Code old: " + getId() + " ------ to  " + getNameSubject() + " ------ Teacher code asociate : " + getIdTeacher()  + " -------- Class code asociate: " +getClassRoom());
         System.out.println("----------------------------------------------------------------------------------------------------------------------------");
     }
 
     @Override
     public String toString(){
-        return  "Subject Code to String: " + getId() + " ------ to  " + getNameSubject() + " ------ Teacher code asociate : " + getIdTeacher()  + " -------- Class code asociate: " + getClassRoom() + "\r\n";
+        return  "Subject Code: " + getId() + " ------ to  " + getNameSubject() + " ------ Teacher code asociate : " + getIdTeacher()  + " -------- Class code asociate: " + getClassRoom() + "\r\n";
     }
-
-
 }

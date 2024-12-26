@@ -6,6 +6,8 @@ import model.Teacher;
 import service.TeacherFullTime;
 import service.TeacherPartTime;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.HashMap;
 import java.util.Scanner;
 
@@ -13,7 +15,8 @@ import java.util.Scanner;
 public class University extends Utilities {
     private static HashMap<Integer, Teacher> teacherDatabase = new HashMap<>();
     private static HashMap<Integer, Student> studentDatabase = new HashMap<>();
-    private static HashMap<Integer, Subject> subjectDatabase = new HashMap<>();
+    private static List<Subject> subjectDatabase = new ArrayList<>();
+    //private static HashMap<Integer, Subject> subjectDatabase = new HashMap<>();
 
     public static void main(String[] args) {
         int menuOption,menuOptionTeacher, showSubject,numberStudentToCreate,studentAge,idSubjectToAsociateStudent,numberSubjectToCreate,idTeacherToAsociateSubject,studentId,numberTeacherToCreate,isFullTime,randomStudentId,randomSubjectId,randomTeacherId;
@@ -39,9 +42,12 @@ public class University extends Utilities {
                     System.out.println(" ");
                     System.out.println("Please enter id of Subject to display information of class");
                     showSubject = read.nextInt();
-                    subjectDatabase.get(showSubject).displaySubjects();
-                    subjectDatabase.get(showSubject).getIdTeacher();
-                    subjectDatabase.get(showSubject).displayStudents();
+                    //searchSubjects(showSubject);
+                    //searchSubjects(showSubject).getIdTeacher();
+                    searchSubjects(showSubject).displayStudents();
+                    //subjectDatabase.get(showSubject);
+                    //subjectDatabase.get(showSubject).getIdTeacher();
+                    //subjectDatabase.get(showSubject).displayStudents();
                     break;
 
                 case 3:
@@ -88,7 +94,7 @@ public class University extends Utilities {
                         System.out.println("Enter ClassRoom of teacher " + j);
                         classRoom = read.next();
 
-                        subjectDatabase.put(randomSubjectId,new Subject(randomSubjectId, subjectName, classRoom));
+                        subjectDatabase.add(new Subject(randomSubjectId, subjectName, classRoom));
 
 
                         printTechersIds();
@@ -97,9 +103,16 @@ public class University extends Utilities {
                             idTeacherToAsociateSubject = read.nextInt();
                             cleanConsole();
                             printTechersIds();
+                            System.out.println("test1 " + teacherDatabase.get(idTeacherToAsociateSubject));
+                            System.out.println("test1 " + teacherDatabase.get(idTeacherToAsociateSubject).getName());
                         }while (teacherDatabase.get(idTeacherToAsociateSubject) == null);
                         Teacher teacher = teacherDatabase.get(idTeacherToAsociateSubject);
-                        subjectDatabase.get(randomSubjectId).addTeacher(teacher);
+
+
+
+                        searchSubjects(randomSubjectId).addTeacher(teacher);
+
+                        //subjectDatabase.get(randomSubjectId).addTeacher(teacher);
 
                         printStudents();
                         do {
@@ -111,7 +124,9 @@ public class University extends Utilities {
                         }while (studentDatabase.get(studentId) == null);
                         cleanConsole();
                         Student student = studentDatabase.get(studentId);
-                        subjectDatabase.get(randomSubjectId).addStudent(student);
+                        //subjectDatabase.get(randomSubjectId).addStudent(student);
+
+                        searchSubjects(randomSubjectId).addStudent(student);
                     }
 
 
@@ -121,8 +136,8 @@ public class University extends Utilities {
                     System.out.println("Enter StudentID");
                     studentId = read.nextInt();
 
-                    for (Integer key : subjectDatabase.keySet()){
-                        subjectDatabase.get(key).displayStudentsById(studentId);
+                    for (Subject key : subjectDatabase){
+                        subjectDatabase.get(key.getId()).displayStudentsById(studentId);
                     }
                     break;
 
@@ -198,10 +213,10 @@ public class University extends Utilities {
         studentDatabase.put(5, new Student(5,"Luisa","Montes",19));
         studentDatabase.put(6, new Student(6,"Fernanda","Rios",21));
         //initialize Database Subject
-        subjectDatabase.put(1000,new Subject(1000,"Java programming","a12"));
-        subjectDatabase.put(1001,new Subject(1001,"Poo Python","a12"));
-        subjectDatabase.put(1002,new Subject(1002,"Java Script class","a12"));
-        subjectDatabase.put(1003,new Subject(1003,"Android class","a12"));
+        subjectDatabase.add(new Subject(1000,"Java programming","a12"));
+        subjectDatabase.add(new Subject(1001,"Poo Python","a12"));
+        subjectDatabase.add(new Subject(1002,"Java Script class","a12"));
+        subjectDatabase.add(new Subject(1003,"Android class","a12"));
     }
 
     private static void printMenu(){
@@ -229,6 +244,20 @@ public class University extends Utilities {
          */
         System.out.println(subjectDatabase);
     }
+
+    private static Subject searchSubjects(int idSubject){
+        Subject subjectObject = null;
+        for (Subject subjectObjectLoop : subjectDatabase){
+            if (subjectObjectLoop.getId() == idSubject) {
+                System.out.println(subjectObjectLoop);
+                subjectObject = subjectObjectLoop;
+                return subjectObject;
+            }
+        }
+        return subjectObject;
+    }
+
+
 
     private static void printTechers(){
         for (Integer key : teacherDatabase.keySet()){
