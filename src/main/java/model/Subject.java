@@ -38,12 +38,12 @@ public class Subject {
 
     public void addStudent(Student student){
         storeStudentsBySubject.add(student);
-        System.out.println(student.getName() + " Has been added " + nameSubject);
+        System.out.println(student.getName() + " Has been added to " + nameSubject);
     }
 
     public void addTeacher(Teacher teacher){
         storeTeacherBySubject.add(teacher);
-        System.out.println(teacher.getName() + " Has been added " + nameSubject);
+        System.out.println(teacher.getName() + " Has been added to " + nameSubject);
     }
 
     public void displayStudents() {

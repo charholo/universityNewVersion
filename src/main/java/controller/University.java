@@ -65,19 +65,26 @@ public class University extends Utilities {
                         studentLastName = read.next();
                         System.out.println("Enter AGE of student" + i);
                         studentAge = read.nextInt();
-                        studentDatabase.put(randomStudentId, new Student(randomStudentId,studentName,studentLastName,studentAge));
-                        printSubjects();
+                        studentDatabase.put(randomStudentId, new Student(randomStudentId, studentName, studentLastName, studentAge));
+                        //printSubjects();
 
                         do {
-                            System.out.println("Select one available subject id to asociate Student uno" + i);
-                            idSubjectToAsociateStudent = read.nextInt();
                             cleanConsole();
                             printSubjects();
-                        }while (subjectDatabase.get(idSubjectToAsociateStudent) == null);
+                            System.out.println("Select one available subject id to asociate Student " + i);
+                            idSubjectToAsociateStudent = read.nextInt();
 
-                        subjectDatabase.get(idSubjectToAsociateStudent).addStudent(new Student(randomStudentId, studentName, studentLastName, studentAge));
-                        System.out.println("Process to asociate was correct " + i);
-                        subjectDatabase.get(idSubjectToAsociateStudent).displayStudents();
+                        }while (searchSubjects(idSubjectToAsociateStudent) == null);
+
+                        Student student = studentDatabase.get(randomStudentId);
+
+                        searchSubjects(idSubjectToAsociateStudent).addStudent(student);
+
+                        //searchSubjects(idSubjectToAsociateStudent).addStudent(new Student(randomStudentId, studentName, studentLastName, studentAge));
+
+                        //subjectDatabase.get(idSubjectToAsociateStudent).addStudent(new Student(randomStudentId, studentName, studentLastName, studentAge));
+                        //System.out.println("Process to asociate was correct " + i);
+                        //searchSubjects(idSubjectToAsociateStudent).displayStudents();
                     }
                     break;
 
@@ -107,8 +114,6 @@ public class University extends Utilities {
                             System.out.println("test1 " + teacherDatabase.get(idTeacherToAsociateSubject).getName());
                         }while (teacherDatabase.get(idTeacherToAsociateSubject) == null);
                         Teacher teacher = teacherDatabase.get(idTeacherToAsociateSubject);
-
-
 
                         searchSubjects(randomSubjectId).addTeacher(teacher);
 
@@ -249,7 +254,7 @@ public class University extends Utilities {
         Subject subjectObject = null;
         for (Subject subjectObjectLoop : subjectDatabase){
             if (subjectObjectLoop.getId() == idSubject) {
-                System.out.println(subjectObjectLoop);
+                //System.out.println(subjectObjectLoop);
                 subjectObject = subjectObjectLoop;
                 return subjectObject;
             }
@@ -277,7 +282,7 @@ public class University extends Utilities {
         }
     }
     private static void cleanConsole(){
-        for (int i = 0; i < 120; i++) {
+        for (int i = 0; i < 80; i++) {
             System.out.println();
         }
     }
