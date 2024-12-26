@@ -2,8 +2,8 @@ package model;
 
 public abstract class Teacher extends Person {
 
-    public Teacher(String name,String lastName){
-        super(name,lastName);
+    public Teacher(int id, String name,String lastName){
+        super(id, name,lastName);
     }
     public Teacher(){
     }

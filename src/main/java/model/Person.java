@@ -4,8 +4,10 @@ public class Person {
 
     private String name;
     private String lastName;
+    private int id;
 
-    public Person(String name, String lastName){
+    public Person(int id, String name, String lastName){
+        this.id = id;
         this.name = name;
         this.lastName = lastName;
     }
@@ -13,6 +15,9 @@ public class Person {
     }
     public String getName(){
         return name;
+    }
+    public int getId(){
+        return id;
     }
     public String getLastName(){
         return lastName;

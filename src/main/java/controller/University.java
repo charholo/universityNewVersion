@@ -13,7 +13,8 @@ import java.util.Scanner;
 
 
 public class University extends Utilities {
-    private static HashMap<Integer, Teacher> teacherDatabase = new HashMap<>();
+    //private static HashMap<Integer, Teacher> teacherDatabase = new HashMap<>();
+    private static List<Teacher> teacherDatabase = new ArrayList<>();
     private static HashMap<Integer, Student> studentDatabase = new HashMap<>();
     private static List<Subject> subjectDatabase = new ArrayList<>();
     //private static HashMap<Integer, Subject> subjectDatabase = new HashMap<>();
@@ -44,6 +45,7 @@ public class University extends Utilities {
                     showSubject = read.nextInt();
                     //searchSubjects(showSubject);
                     //searchSubjects(showSubject).getIdTeacher();
+                    System.out.println(searchSubjects(showSubject));
                     searchSubjects(showSubject).displayStudents();
                     //subjectDatabase.get(showSubject);
                     //subjectDatabase.get(showSubject).getIdTeacher();
@@ -110,12 +112,11 @@ public class University extends Utilities {
                             idTeacherToAsociateSubject = read.nextInt();
                             cleanConsole();
                             printTechersIds();
-                            System.out.println("test1 " + teacherDatabase.get(idTeacherToAsociateSubject));
-                            System.out.println("test1 " + teacherDatabase.get(idTeacherToAsociateSubject).getName());
-                        }while (teacherDatabase.get(idTeacherToAsociateSubject) == null);
-                        Teacher teacher = teacherDatabase.get(idTeacherToAsociateSubject);
+                            //System.out.println("test1 " + teacherDatabase.get(idTeacherToAsociateSubject));
+                            //System.out.println("test1 " + teacherDatabase.get(idTeacherToAsociateSubject).getName());
+                        }while (searchTeacher(idTeacherToAsociateSubject) == null);
 
-                        searchSubjects(randomSubjectId).addTeacher(teacher);
+                        searchSubjects(randomSubjectId).addTeacher(searchTeacher(idTeacherToAsociateSubject));
 
                         //subjectDatabase.get(randomSubjectId).addTeacher(teacher);
 
@@ -171,7 +172,7 @@ public class University extends Utilities {
 
                             TeacherFullTime objectToCalculatefullTimeSalary = new TeacherFullTime();
                             double finalSalary = objectToCalculatefullTimeSalary.calculateSalary(teacherSalary, seniorityExperience);
-                            teacherDatabase.put(randomTeacherId, new TeacherFullTime(randomTeacherId, teacherName, teacherLastName, finalSalary,seniorityExperience));
+                            teacherDatabase.add(new TeacherFullTime(randomTeacherId, teacherName, teacherLastName, finalSalary,seniorityExperience));
 
                         }else if (menuOptionTeacher == 2){
                             System.out.println("To part  time teacher please enter hours per week  " + t);
@@ -179,7 +180,7 @@ public class University extends Utilities {
 
                             TeacherPartTime objectToCalculatefullPartTimeSalary = new TeacherPartTime();
                             double finalSalary = objectToCalculatefullPartTimeSalary.calculateSalary(teacherSalary, seniorityExperience);
-                            teacherDatabase.put(randomTeacherId, new TeacherPartTime(randomTeacherId, teacherName, teacherLastName, finalSalary,seniorityExperience));
+                            teacherDatabase.add(new TeacherPartTime(randomTeacherId, teacherName, teacherLastName, finalSalary,seniorityExperience));
 
                         }else {
                             System.out.println("Sorry wrong option");
@@ -208,8 +209,8 @@ public class University extends Utilities {
 
     static void initData(){
         //initialize Database Teacher
-        teacherDatabase.put(10, new TeacherFullTime(10, "Felipe", "Jiménez", 4000,8));
-        teacherDatabase.put(20, new TeacherPartTime(20,"Santiago", "Ponce de Leon", 4000,40));
+        teacherDatabase.add(new TeacherFullTime(10, "Felipe", "Jiménez", 4000,8));
+        teacherDatabase.add(new TeacherPartTime(20,"Santiago", "Ponce de Leon", 4000,40));
         //initialize Database Students
         studentDatabase.put(1, new Student(1,"Charholo","Holguin",31));
         studentDatabase.put(2, new Student(2,"Lizfer","Rios",34));
@@ -262,12 +263,32 @@ public class University extends Utilities {
         return subjectObject;
     }
 
+    private static Teacher searchTeacher(int idTeacher){
+        Teacher teacherObject = null;
+        for (Teacher teacherObjectLoop : teacherDatabase){
+            //System.out.println("testID " + teacherObjectLoop.getId());
+            //System.out.println("idTeacherCompare " + idTeacher);
+            if (teacherObjectLoop.getId() == idTeacher) {
+                System.out.println("Son iguales OK");
+                //System.out.println(subjectObjectLoop);
+                teacherObject = teacherObjectLoop;
+                System.out.println("Objeto retornado:" + teacherObject);
+                return teacherObject;
+            }
+        }
+        return teacherObject;
+    }
+
 
 
     private static void printTechers(){
-        for (Integer key : teacherDatabase.keySet()){
+        /*for (Integer key : teacherDatabase.keySet()){
             teacherDatabase.get(key).displayInfoPerson();
         }
+
+         */
+
+        System.out.println(teacherDatabase);
     }
     private static void printStudents(){
         System.out.println(" ");
@@ -276,10 +297,13 @@ public class University extends Utilities {
         }
     }
     private static void printTechersIds(){
-        for (Integer key : teacherDatabase.keySet()){
+        /*for (Integer key : teacherDatabase.keySet()){
             teacherDatabase.get(key).displayInfoTeacher();
             System.out.println("------------------------------");
         }
+
+         */
+        System.out.println(teacherDatabase);
     }
     private static void cleanConsole(){
         for (int i = 0; i < 80; i++) {

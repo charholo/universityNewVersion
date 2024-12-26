@@ -3,14 +3,14 @@ package service;
 import model.Teacher;
 
 public class TeacherPartTime extends Teacher {
-    private int id;
+    //private int id;
     private double baseSalary;
     private double hoursPerWeek;
 
 
     public TeacherPartTime(int id, String name,String lastName, double baseSalary, double hoursPerWeek){
-        super(name,lastName);
-        this.id=id;
+        super(id,name,lastName);
+        //this.id=id;
         this.baseSalary=baseSalary;
         this.hoursPerWeek= hoursPerWeek;
     }
@@ -18,7 +18,7 @@ public class TeacherPartTime extends Teacher {
     }
 
     public int getId(){
-        return id;
+        return super.getId();
     }
     public double getSalary(){
         return baseSalary;
@@ -36,6 +36,11 @@ public class TeacherPartTime extends Teacher {
         System.out.println("----------------------------------------------------------------------------------------------------------------------------");
         System.out.println("Teacher Code: " + getId() + " " + super.getName() + " " +  super.getLastName() + " " + " Salary: " + getSalary() + " Us " + " Hours per week " + getHoursPerWeek());
         System.out.println("----------------------------------------------------------------------------------------------------------------------------");
+    }
+
+    @Override
+    public String toString(){
+        return  "Teacher Code: " + super.getId() + " " + super.getName() + " " +  super.getLastName() + " " + " Salary: " + getSalary() + " Us " + " Hours per week " + getHoursPerWeek();
     }
 
     @Override
