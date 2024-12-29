@@ -8,17 +8,13 @@ import service.TeacherPartTime;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.HashMap;
 import java.util.Scanner;
 
 
 public class University extends Utilities {
-    //private static HashMap<Integer, Teacher> teacherDatabase = new HashMap<>();
     private static List<Teacher> teacherDatabase = new ArrayList<>();
-    //private static HashMap<Integer, Student> studentDatabase = new HashMap<>();
     private static List<Student> studentDatabase = new ArrayList<>();
     private static List<Subject> subjectDatabase = new ArrayList<>();
-    //private static HashMap<Integer, Subject> subjectDatabase = new HashMap<>();
 
     public static void main(String[] args) {
         int menuOption,menuOptionTeacher, showSubject,numberStudentToCreate,studentAge,idSubjectToAsociateStudent,numberSubjectToCreate,idTeacherToAsociateSubject,studentId,numberTeacherToCreate,isFullTime,randomStudentId,randomSubjectId,randomTeacherId;
@@ -45,15 +41,7 @@ public class University extends Utilities {
                     System.out.println("Please enter id of Subject to display information of class");
                     showSubject = read.nextInt();
                     searchSubjects(showSubject).displaySubjects();
-
-                    //searchSubjects(showSubject).getIdTeacher();
                     searchSubjects(showSubject).getStudentsToSubject();
-
-
-                    //System.out.println(searchSubjects(showSubject));
-                    //subjectDatabase.get(showSubject);
-                    //subjectDatabase.get(showSubject).getIdTeacher();
-                    //subjectDatabase.get(showSubject).displayStudents();
                     break;
 
                 case 3:
@@ -72,7 +60,6 @@ public class University extends Utilities {
                         System.out.println("Enter AGE of student" + i);
                         studentAge = read.nextInt();
                         studentDatabase.add(new Student(randomStudentId, studentName, studentLastName, studentAge));
-                        //printSubjects();
 
                         do {
                             cleanConsole();
@@ -81,17 +68,8 @@ public class University extends Utilities {
                             idSubjectToAsociateStudent = read.nextInt();
 
                         }while (searchSubjects(idSubjectToAsociateStudent) == null);
-
-                        //Student student = studentDatabase.get(randomStudentId);
-
-                        //searchSubjects(idSubjectToAsociateStudent).addStudent(student);
                         searchSubjects(idSubjectToAsociateStudent).addStudent(searchStudent(randomStudentId));
 
-                        //searchSubjects(idSubjectToAsociateStudent).addStudent(new Student(randomStudentId, studentName, studentLastName, studentAge));
-
-                        //subjectDatabase.get(idSubjectToAsociateStudent).addStudent(new Student(randomStudentId, studentName, studentLastName, studentAge));
-                        //System.out.println("Process to asociate was correct " + i);
-                        //searchSubjects(idSubjectToAsociateStudent).displayStudents();
                     }
                     break;
 
@@ -117,13 +95,9 @@ public class University extends Utilities {
                             idTeacherToAsociateSubject = read.nextInt();
                             cleanConsole();
                             printTechersIds();
-                            //System.out.println("test1 " + teacherDatabase.get(idTeacherToAsociateSubject));
-                            //System.out.println("test1 " + teacherDatabase.get(idTeacherToAsociateSubject).getName());
                         }while (searchTeacher(idTeacherToAsociateSubject) == null);
 
                         searchSubjects(randomSubjectId).addTeacher(searchTeacher(idTeacherToAsociateSubject));
-
-                        //subjectDatabase.get(randomSubjectId).addTeacher(teacher);
 
                         printStudents();
                         do {
@@ -134,9 +108,6 @@ public class University extends Utilities {
                             printStudents();
                         }while (searchStudent(studentId) == null);
                         cleanConsole();
-                        //Student student = studentDatabase.get(studentId);
-                        //subjectDatabase.get(randomSubjectId).addStudent(student);
-
                         searchSubjects(randomSubjectId).addStudent(searchStudent(studentId));
                     }
 
@@ -148,7 +119,8 @@ public class University extends Utilities {
                     studentId = read.nextInt();
 
                     for (Subject key : subjectDatabase){
-                        subjectDatabase.get(key.getId()).displayStudentsById(studentId);
+                        searchSubjects(key.getId()).displayStudentsById(studentId);
+
                     }
                     break;
 
@@ -260,7 +232,6 @@ public class University extends Utilities {
         Subject subjectObject = null;
         for (Subject subjectObjectLoop : subjectDatabase){
             if (subjectObjectLoop.getId() == idSubject) {
-                //System.out.println(subjectObjectLoop);
                 subjectObject = subjectObjectLoop;
                 return subjectObject;
             }
@@ -271,13 +242,8 @@ public class University extends Utilities {
     private static Teacher searchTeacher(int idTeacher){
         Teacher teacherObject = null;
         for (Teacher teacherObjectLoop : teacherDatabase){
-            //System.out.println("testID " + teacherObjectLoop.getId());
-            //System.out.println("idTeacherCompare " + idTeacher);
             if (teacherObjectLoop.getId() == idTeacher) {
-                System.out.println("Son iguales OK");
-                //System.out.println(subjectObjectLoop);
                 teacherObject = teacherObjectLoop;
-                System.out.println("Objeto retornado:" + teacherObject);
                 return teacherObject;
             }
         }
@@ -288,7 +254,6 @@ public class University extends Utilities {
         Student studentObject = null;
         for (Student studentObjectLoop : studentDatabase){
             if (studentObjectLoop.getId() == idStudent) {
-                //System.out.println(subjectObjectLoop);
                 studentObject = studentObjectLoop;
                 return studentObject;
             }

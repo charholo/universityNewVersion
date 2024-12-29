@@ -62,11 +62,13 @@ public class Subject {
         }
     }
 
-    public void displaySubjects(){
+public void displaySubjects(){
         System.out.println("***************************************************************************************************************************");
         System.out.println("Subject Code old: " + getId() + " ------ to  " + getNameSubject() + " ------ Teacher code asociate : " + getIdTeacher()  + " -------- Class code asociate: " +getClassRoom());
         System.out.println("----------------------------------------------------------------------------------------------------------------------------");
     }
+
+
 
     @Override
     public String toString(){
