@@ -1,11 +1,11 @@
 package controller;
 import helpers.Utilities;
+import model.Person;
 import model.Student;
 import model.Subject;
 import model.Teacher;
 import service.TeacherFullTime;
 import service.TeacherPartTime;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -93,12 +93,11 @@ public class University extends Utilities {
                         do {
                             System.out.println("please enter correct teacher Id");
                             idTeacherToAsociateSubject = read.nextInt();
-                            cleanConsole();
                             printTechersIds();
                         }while (searchTeacher(idTeacherToAsociateSubject) == null);
 
                         searchSubjects(randomSubjectId).addTeacher(searchTeacher(idTeacherToAsociateSubject));
-
+                        cleanConsole();
                         printStudents();
                         do {
                             System.out.println(" ");
@@ -217,15 +216,12 @@ public class University extends Utilities {
 
     }
 
-    private static void printSubjects(){
-        System.out.println(" ");
-        /*for (Integer key : subjectDatabase.keySet()){
-            //subjectDatabase.get(key).displaySubjects();
-            subjectDatabase.get(key).toString();
-        }
+    private static void printSubjects() {
+    System.out.println("Subjetcs: ");
+    for (Subject subject: subjectDatabase){
+        System.out.println(subject);
+    }
 
-         */
-        System.out.println(subjectDatabase);
     }
 
     private static Subject searchSubjects(int idSubject){
@@ -264,21 +260,16 @@ public class University extends Utilities {
 
 
     private static void printTechers(){
-        /*for (Integer key : teacherDatabase.keySet()){
-            teacherDatabase.get(key).displayInfoPerson();
+        System.out.println("Teacher: ");
+        for (Teacher teacher : teacherDatabase) {
+            System.out.println(teacher);
         }
-
-         */
-
-        System.out.println(teacherDatabase);
     }
     private static void printStudents(){
-        System.out.println(" ");
-        /*for (Integer key : studentDatabase.keySet()){
-            studentDatabase.get(key).displayInfoPerson();
+        System.out.println("Students: ");
+        for (Student student : studentDatabase) {
+            System.out.println(student);
         }
-        */
-        System.out.println(studentDatabase);
     }
     private static void printTechersIds(){
         /*for (Integer key : teacherDatabase.keySet()){

@@ -26,10 +26,6 @@ public class TeacherPartTime extends Teacher {
     public double getHoursPerWeek(){
         return hoursPerWeek;
     }
-    @Override
-    public void displayInfoTeacher(){
-        System.out.println("Id: " + getId() + " " + getName() + " " + getLastName());
-    }
 
     @Override
     public void displayInfoPerson(){

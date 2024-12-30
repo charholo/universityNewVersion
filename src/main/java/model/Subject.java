@@ -72,6 +72,6 @@ public void displaySubjects(){
 
     @Override
     public String toString(){
-        return  "Subject Code: " + getId() + " ------ to  " + getNameSubject() + " ------ Teacher code asociate : " + getIdTeacher()  + " -------- Class code asociate: " + getClassRoom() + "\r\n";
+        return  "Code: " + getId() + " -- to  " + getNameSubject() + " -- Teacher : " + getIdTeacher()  + " -- Class: " + getClassRoom() + "\r";
     }
 }

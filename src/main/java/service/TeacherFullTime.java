@@ -27,11 +27,6 @@ public class TeacherFullTime extends Teacher {
         return seniorityExperience;
     }
     @Override
-    public void displayInfoTeacher(){
-        System.out.println("Id: " + getId() + " " + getName() + " " + getLastName());
-    }
-
-    @Override
     public void displayInfoPerson(){
         System.out.println("----------------------------------------------------------------------------------------------------------------------------");
         System.out.println("Teacher Code OLD: " + getId() + " " + super.getName() + " " +  super.getLastName() + " " + " Salary: " + getSalary() + " Us " + " experience " + getSeniorityExperience()+ " years ");
@@ -40,7 +35,7 @@ public class TeacherFullTime extends Teacher {
 
     @Override
     public String toString(){
-        return  "Teacher Code: " + super.getId() + " " + super.getName() + " " +  super.getLastName() + " " + " Salary: " + getSalary() + " Us " + " experience " + getSeniorityExperience()+ " years ";
+        return  "Teacher Code: " + super.getId() + " " + super.getName() + " " +  super.getLastName() + " " + " Salarys: " + getSalary() + " Us " + " experience " + getSeniorityExperience()+ " years ";
     }
 
     @Override

@@ -25,4 +25,9 @@ public class Person {
     public void displayInfoPerson(){
         System.out.println(getName() + " " + getLastName());
     }
+
+    @Override
+    public String toString() {
+        return super.toString();
+    }
 }
