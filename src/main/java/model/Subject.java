@@ -6,7 +6,6 @@ public class Subject {
     private int id;
     private String nameSubject;
     private String classRoom;
-    private Teacher teacher;
     private ArrayList<Student> storeStudentsBySubject;
     private ArrayList<Teacher> storeTeacherBySubject;
 
@@ -48,30 +47,23 @@ public class Subject {
 
     public void getStudentsToSubject() {
         for (Student student : storeStudentsBySubject) {
-            student.displayInfoPerson();
-        }
+            student.getInfoPerson();
+            }
     }
 
-    public void displayStudentsById(int student) {
+    public void getStudentsById(int student) {
         for (Student studentById : storeStudentsBySubject) {
             if (student == studentById.getId()){
                 System.out.println(" ");
                 System.out.println("Subject: " + nameSubject + " Code: " + getId());
-                studentById.displayInfoPerson();
+                studentById.getInfoPerson();
             }
         }
     }
 
-public void displaySubjects(){
-        System.out.println("***************************************************************************************************************************");
-        System.out.println("Subject Code old: " + getId() + " ------ to  " + getNameSubject() + " ------ Teacher code asociate : " + getIdTeacher()  + " -------- Class code asociate: " +getClassRoom());
-        System.out.println("----------------------------------------------------------------------------------------------------------------------------");
-    }
-
-
-
     @Override
-    public String toString(){
-        return  "Code: " + getId() + " -- to  " + getNameSubject() + " -- Teacher : " + getIdTeacher()  + " -- Class: " + getClassRoom() + "\r";
+    public String toString() {
+        System.out.println("***************************************************************************************************************************");
+        return "Subject Code: " + getId() + " -- to  " + getNameSubject() + " -- Teacher : " + getIdTeacher() + " -- Class: " + getClassRoom() + "\r";
     }
 }

@@ -22,12 +22,9 @@ public class Person {
     public String getLastName(){
         return lastName;
     }
-    public void displayInfoPerson(){
-        System.out.println(getName() + " " + getLastName());
+    public void getInfoPerson(){
+        System.out.println("Code: " + getId() + " Name: " + getName() + " LastName: " +getLastName());
+
     }
 
-    @Override
-    public String toString() {
-        return super.toString();
-    }
 }

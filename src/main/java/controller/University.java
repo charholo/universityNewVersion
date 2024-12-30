@@ -1,6 +1,5 @@
 package controller;
 import helpers.Utilities;
-import model.Person;
 import model.Student;
 import model.Subject;
 import model.Teacher;
@@ -40,7 +39,7 @@ public class University extends Utilities {
                     System.out.println(" ");
                     System.out.println("Please enter id of Subject to display information of class");
                     showSubject = read.nextInt();
-                    searchSubjects(showSubject).displaySubjects();
+                    System.out.println(searchSubjects(showSubject));
                     searchSubjects(showSubject).getStudentsToSubject();
                     break;
 
@@ -52,7 +51,6 @@ public class University extends Utilities {
                         System.out.println("\n");
                         randomStudentId = getRandomNumberId(RandomIdentifier.STUDENT);
                         System.out.println(randomStudentId + " Automatical ID " + " to Student "  + i);
-                        System.out.println(" ");
                         System.out.println("Enter NAME of student "+ i);
                         studentName = read.next();
                         System.out.println("Enter LASTNAME of student " + i);
@@ -89,11 +87,11 @@ public class University extends Utilities {
                         subjectDatabase.add(new Subject(randomSubjectId, subjectName, classRoom));
 
 
-                        printTechersIds();
+                        printTechers();
                         do {
                             System.out.println("please enter correct teacher Id");
                             idTeacherToAsociateSubject = read.nextInt();
-                            printTechersIds();
+                            printTechers();
                         }while (searchTeacher(idTeacherToAsociateSubject) == null);
 
                         searchSubjects(randomSubjectId).addTeacher(searchTeacher(idTeacherToAsociateSubject));
@@ -118,7 +116,7 @@ public class University extends Utilities {
                     studentId = read.nextInt();
 
                     for (Subject key : subjectDatabase){
-                        searchSubjects(key.getId()).displayStudentsById(studentId);
+                        searchSubjects(key.getId()).getStudentsById(studentId);
 
                     }
                     break;
@@ -260,7 +258,7 @@ public class University extends Utilities {
 
 
     private static void printTechers(){
-        System.out.println("Teacher: ");
+        System.out.println("Teachers: ");
         for (Teacher teacher : teacherDatabase) {
             System.out.println(teacher);
         }

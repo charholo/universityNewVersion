@@ -8,8 +8,6 @@ public abstract class Teacher extends Person {
     public Teacher(){
     }
 
-    public abstract void displayInfoPerson();
-
     public abstract double calculateSalary(double salary, double seniorityExperience);
 
 }
