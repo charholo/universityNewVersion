@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Subject {
     private int id;
-    private String nameSubject;
+    private String name;
     private String classRoom;
     private ArrayList<Student> storeStudentsBySubject;
     private ArrayList<Teacher> storeTeacherBySubject;
@@ -12,7 +12,7 @@ public class Subject {
     public Subject(int id, String nameSubject,String classRoom){
         this.id=id;
         this.classRoom=classRoom;
-        this.nameSubject=nameSubject;
+        this.name=nameSubject;
         this.storeStudentsBySubject = new ArrayList<>();
         this.storeTeacherBySubject = new ArrayList<>();
     }
@@ -21,7 +21,7 @@ public class Subject {
         return id;
     }
     public String getNameSubject(){
-        return nameSubject;
+        return name;
     }
     public String getClassRoom(){
         return classRoom;
@@ -37,12 +37,10 @@ public class Subject {
 
     public void addStudent(Student student){
         storeStudentsBySubject.add(student);
-        System.out.println(student.getName() + " Has been added to " + nameSubject);
     }
 
     public void addTeacher(Teacher teacher){
         storeTeacherBySubject.add(teacher);
-        System.out.println(teacher.getName() + " Has been added to " + nameSubject);
     }
 
     public void getStudentsToSubject() {
@@ -55,7 +53,7 @@ public class Subject {
         for (Student studentById : storeStudentsBySubject) {
             if (student == studentById.getId()){
                 System.out.println(" ");
-                System.out.println("Subject: " + nameSubject + " Code: " + getId());
+                System.out.println("Subject: " + name + " Code: " + getId());
                 studentById.getInfoPerson();
             }
         }

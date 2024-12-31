@@ -27,7 +27,7 @@ public class TeacherPartTime extends Teacher {
 
     @Override
     public String toString(){
-        return  "Code :"  + super.getId() + " " + super.getName() + " " +  super.getLastName() + " " + " Salary: " + getSalary() + " Us " + " Hours per week " + getHoursPerWeek();
+        return  "Code: "  + super.getId() + " " + super.getName() + " " +  super.getLastName() + " " + " Salary: " + getSalary() + " Us " + " Hours per week " + getHoursPerWeek();
     }
 
     @Override
